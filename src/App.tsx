@@ -136,34 +136,34 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-300 font-sans antialiased selection:bg-cyan-500/30 selection:text-cyan-300">
+    <div className="min-h-screen bg-canvas-bg text-slate-700 font-sans antialiased selection:bg-brand-green/25 selection:text-brand-green-hover">
       
       {/* ================= TOP NAVIGATION / HEADER ================= */}
-      <header className="sticky top-0 z-30 bg-slate-900/85 backdrop-blur-md border-b border-slate-800 px-6 py-4">
+      <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-200/80 px-6 py-4 shadow-xs">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           
           {/* Logo Brand */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-cyan-500 rounded flex items-center justify-center font-bold text-slate-950 text-xl shadow-lg shadow-cyan-500/10">
+            <div className="w-8 h-8 bg-brand-green rounded-lg flex items-center justify-center font-black text-white text-lg shadow-md shadow-brand-green/20">
               O
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-xl font-semibold tracking-tight text-white font-sans">openassets<span className="text-cyan-500 font-bold">.studio</span></h1>
-                <span className="text-[9px] bg-cyan-500/10 text-cyan-400 font-bold border border-cyan-500/25 px-1.5 py-0.5 rounded uppercase">Beta</span>
+                <h1 className="text-lg font-extrabold tracking-tight text-slate-900 font-sans">openassets<span className="text-brand-green font-extrabold">.studio</span></h1>
+                <span className="text-[9px] bg-brand-green/10 text-brand-green font-bold border border-brand-green/25 px-1.5 py-0.5 rounded uppercase">Beta</span>
               </div>
-              <p className="text-[11px] text-slate-500">Collaborative Game Asset Registry & MCP Hub</p>
+              <p className="text-[11px] text-slate-400">Collaborative Game Asset Registry & MCP Hub</p>
             </div>
           </div>
 
           {/* Nav / Tabs control */}
-          <div className="flex items-center gap-2 bg-slate-800 p-1 rounded-lg border border-slate-700">
+          <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200/60">
             <button
               onClick={() => setActiveWorkspaceTab('catalog')}
               className={`flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 activeWorkspaceTab === 'catalog' 
-                  ? 'bg-slate-700 text-cyan-400 shadow-sm' 
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'bg-white text-brand-green border border-slate-200/50 shadow-xs' 
+                  : 'text-slate-500 hover:text-slate-800'
               }`}
             >
               <Compass className="w-4 h-4" />
@@ -173,8 +173,8 @@ export default function App() {
               onClick={() => setActiveWorkspaceTab('mcp')}
               className={`flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 activeWorkspaceTab === 'mcp' 
-                  ? 'bg-slate-700 text-cyan-400 shadow-sm' 
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'bg-white text-brand-green border border-slate-200/50 shadow-xs' 
+                  : 'text-slate-500 hover:text-slate-800'
               }`}
             >
               <Terminal className="w-4 h-4" />
@@ -185,33 +185,33 @@ export default function App() {
           {/* Mandated External Friend Links & Actions */}
           <div className="flex items-center flex-wrap gap-3">
             {/* Kenney & ThreeJS Assets badges */}
-            <div className="flex items-center gap-2.5 bg-slate-900/50 px-3 py-1.5 rounded-xl border border-slate-800 text-xs">
-              <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">External Partners</span>
+            <div className="flex items-center gap-2.5 bg-white px-3 py-1.5 rounded-xl border border-slate-200 text-xs shadow-xs">
+              <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">External Partners</span>
               <a 
                 href="https://kenney.nl/assets" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="hover:text-cyan-400 transition-colors flex items-center gap-0.5 font-medium text-slate-400"
+                className="hover:text-brand-green transition-colors flex items-center gap-0.5 font-medium text-slate-600"
               >
                 Kenney Assets
-                <ArrowUpRight className="w-3 h-3" />
+                <ArrowUpRight className="w-3 h-3 text-slate-400" />
               </a>
-              <span className="text-slate-800">|</span>
+              <span className="text-slate-200">|</span>
               <a 
                 href="https://threejsassets.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="hover:text-cyan-400 transition-colors flex items-center gap-0.5 font-medium text-slate-400"
+                className="hover:text-brand-green transition-colors flex items-center gap-0.5 font-medium text-slate-600"
               >
                 ThreeJS Assets
-                <ArrowUpRight className="w-3 h-3" />
+                <ArrowUpRight className="w-3 h-3 text-slate-400" />
               </a>
             </div>
 
             {/* Share action */}
             <button
               onClick={() => setIsUploadOpen(true)}
-              className="px-4 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded text-sm font-medium transition-colors flex items-center gap-1.5 cursor-pointer"
+              className="px-4 py-2 bg-brand-green hover:bg-brand-green-hover text-white rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer shadow-sm shadow-brand-green/20"
             >
               <Plus className="w-4 h-4" />
               Upload Asset
@@ -221,20 +221,19 @@ export default function App() {
       </header>
 
       {/* ================= HERO INTRO SECTION ================= */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-900/30 to-transparent border-b border-slate-800/40 px-6 py-12 text-center">
+      <section className="relative overflow-hidden border-b border-slate-200/50 px-6 py-16 text-center bg-radial-gradient from-brand-green/5 via-transparent to-transparent">
         {/* Decorative background grid */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
-        <div className="relative max-w-3xl mx-auto space-y-4">
-          <span className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-widest text-cyan-400 bg-cyan-500/10 px-3 py-1 border border-cyan-500/20 rounded-full uppercase">
+        <div className="absolute inset-0 bg-grid-pattern opacity-65 pointer-events-none"></div>
+        <div className="relative max-w-4xl mx-auto space-y-6">
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-wider text-brand-green bg-brand-green/10 px-3 py-1 border border-brand-green/20 rounded-full uppercase">
             <Layers className="w-3.5 h-3.5" />
-            Cross-Engine Compatibility Hub
+            91+ Web & Engine Optimized Assets
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white animate-fade-in">
-            High Fidelity Game Assets & Snippets for AI Workflows
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 animate-fade-in leading-tight max-w-3xl mx-auto">
+            The openassets library. <br className="hidden sm:inline" />Search <span className="text-brand-green">web-ready</span> game resources.
           </h2>
-          <p className="text-sm md:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            Download 3D models, shaders, scripts, and sprite-sheets. Connect your IDE or assistant dynamically via our built-in 
-            <strong className="text-cyan-400 font-semibold font-mono"> Model Context Protocol (MCP)</strong> server. Co-maintain tags, codes, and formats with fellow game developers!
+          <p className="text-sm md:text-base text-slate-500 max-w-2xl mx-auto leading-relaxed">
+            Free & premium. Every asset optimized, oriented, and licensed for real projects — no asset-file resale or redistribution. Integrate seamlessly via <strong className="text-brand-green font-semibold font-mono">Model Context Protocol (MCP)</strong>.
           </p>
         </div>
       </section>
@@ -253,11 +252,11 @@ export default function App() {
               transition={{ duration: 0.15 }}
               className="space-y-6"
             >
-              <div className="bg-slate-900/40 p-5 rounded-2xl border border-slate-800 max-w-4xl mx-auto space-y-3 text-center sm:text-left">
-                <h3 className="font-bold text-white text-base">Model Context Protocol Integration</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">
+              <div className="bg-white p-5 rounded-2xl border border-slate-200/80 max-w-4xl mx-auto space-y-3 text-center sm:text-left shadow-xs">
+                <h3 className="font-bold text-slate-900 text-base">Model Context Protocol Integration</h3>
+                <p className="text-xs text-slate-500 leading-relaxed">
                   MCP allows large language models (like Claude in Cursor or VS Code AI agents) to access openassets.studio directories directly. Once configured, you can command your agent: 
-                  <span className="text-cyan-400 italic font-mono bg-slate-950 px-2 py-0.5 rounded border border-slate-900 mx-1">"Find a toon water shader from openassets and paste it inside my project"</span>, and the AI will download, format, and load the code straight into your file explorer automatically.
+                  <span className="text-brand-green font-semibold italic font-mono bg-slate-50 px-2 py-0.5 rounded border border-slate-200/60 mx-1">"Find a toon water shader from openassets and paste it inside my project"</span>, and the AI will download, format, and load the code straight into your file explorer automatically.
                 </p>
               </div>
               <McpTerminal />
@@ -275,52 +274,62 @@ export default function App() {
               className="space-y-8"
             >
               {/* Filter Console Panel */}
-              <div className="bg-slate-900/50 p-4 border border-slate-800 rounded-2xl space-y-4">
+              <div className="bg-white p-5 border border-slate-200/80 rounded-2xl shadow-xs space-y-4">
                 <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
-                  {/* Search input */}
-                  <div className="relative w-full lg:max-w-md">
-                    <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-500" />
-                    <input
-                      type="text"
-                      placeholder="Search assets, shaders, controller scripts..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full bg-slate-800 border border-slate-700 hover:border-slate-600/80 focus:border-cyan-500 text-slate-200 text-sm rounded-lg pl-11 pr-4 py-2.5 outline-none transition-colors"
-                    />
+                  {/* Search input in visual match with threejsassets */}
+                  <div className="relative w-full lg:max-w-md flex items-center bg-white border border-slate-200 hover:border-slate-300 focus-within:border-brand-green rounded-xl p-1 shadow-sm transition-all">
+                    <div className="flex items-center pl-3 flex-grow gap-2">
+                      <Search className="w-4.5 h-4.5 text-slate-400" />
+                      <input
+                        type="text"
+                        placeholder="Search assets, shaders, scripts..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full bg-transparent text-slate-800 text-sm outline-none placeholder:text-slate-400 py-1.5"
+                      />
+                    </div>
                   </div>
 
                   {/* Filter controls triggers */}
                   <div className="flex items-center gap-3 w-full lg:w-auto justify-end overflow-x-auto py-1">
                     {/* Source Selector button toggles */}
-                    <div className="flex bg-slate-800 p-1 rounded-lg border border-slate-700 flex-shrink-0 text-xs">
+                    <div className="flex bg-slate-100 p-1 rounded-xl border border-slate-200 flex-shrink-0 text-xs">
                       <button
                         onClick={() => setSelectedSource('all')}
-                        className={`px-3 py-1.5 font-bold rounded-lg transition-all cursor-pointer ${
-                          selectedSource === 'all' ? 'bg-slate-700 text-cyan-400' : 'text-slate-400 hover:text-slate-200'
+                        className={`px-3.5 py-1.5 font-bold rounded-lg transition-all cursor-pointer ${
+                          selectedSource === 'all' 
+                            ? 'bg-white text-brand-green border border-slate-200/50 shadow-xs' 
+                            : 'text-slate-500 hover:text-slate-800'
                         }`}
                       >
                         All Directories
                       </button>
                       <button
                         onClick={() => setSelectedSource('openassets')}
-                        className={`px-3 py-1.5 font-bold rounded-lg transition-all cursor-pointer ${
-                          selectedSource === 'openassets' ? 'bg-cyan-500/10 text-cyan-400' : 'text-slate-400 hover:text-slate-200'
+                        className={`px-3.5 py-1.5 font-bold rounded-lg transition-all cursor-pointer ${
+                          selectedSource === 'openassets' 
+                            ? 'bg-brand-green/10 text-brand-green' 
+                            : 'text-slate-500 hover:text-slate-800'
                         }`}
                       >
                         Native
                       </button>
                       <button
                         onClick={() => setSelectedSource('kenney')}
-                        className={`px-3 py-1.5 font-bold rounded-lg transition-all cursor-pointer ${
-                          selectedSource === 'kenney' ? 'bg-orange-500/10 text-orange-400' : 'text-slate-400 hover:text-slate-200'
+                        className={`px-3.5 py-1.5 font-bold rounded-lg transition-all cursor-pointer ${
+                          selectedSource === 'kenney' 
+                            ? 'bg-orange-500/10 text-orange-600' 
+                            : 'text-slate-500 hover:text-slate-800'
                         }`}
                       >
                         Kenney
                       </button>
                       <button
                         onClick={() => setSelectedSource('threejs')}
-                        className={`px-3 py-1.5 font-bold rounded-lg transition-all cursor-pointer ${
-                          selectedSource === 'threejs' ? 'bg-indigo-500/10 text-indigo-400' : 'text-slate-400 hover:text-slate-200'
+                        className={`px-3.5 py-1.5 font-bold rounded-lg transition-all cursor-pointer ${
+                          selectedSource === 'threejs' 
+                            ? 'bg-indigo-500/10 text-indigo-600' 
+                            : 'text-slate-500 hover:text-slate-800'
                         }`}
                       >
                         Three.js
@@ -330,8 +339,8 @@ export default function App() {
                     {/* Filter Drawer toggle */}
                     <button
                       onClick={() => setShowFiltersPanel(!showFiltersPanel)}
-                      className={`flex items-center gap-2 px-3 py-2 bg-slate-800 border rounded-xl text-xs font-bold hover:text-cyan-400 transition-colors cursor-pointer ${
-                        showFiltersPanel ? 'border-cyan-500 text-cyan-400' : 'border-slate-700 text-slate-400'
+                      className={`flex items-center gap-2 px-3.5 py-2 bg-white border rounded-xl text-xs font-bold hover:text-brand-green transition-all cursor-pointer ${
+                        showFiltersPanel ? 'border-brand-green text-brand-green shadow-xs' : 'border-slate-200 text-slate-500'
                       }`}
                     >
                       <SlidersHorizontal className="w-4 h-4" />
@@ -346,15 +355,15 @@ export default function App() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="pt-3 border-t border-slate-800/60 grid grid-cols-1 md:grid-cols-2 gap-4"
+                    className="pt-3 border-t border-slate-200/60 grid grid-cols-1 md:grid-cols-2 gap-4"
                   >
                     {/* Game Engine filters */}
                     <div className="space-y-1.5">
-                      <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest block">Compatible Engine</span>
+                      <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest block">Compatible Engine</span>
                       <select
                         value={selectedEngine}
                         onChange={(e) => setSelectedEngine(e.target.value)}
-                        className="bg-slate-800 border border-slate-700 hover:border-slate-600 focus:border-cyan-500 text-slate-300 text-xs rounded-xl px-3 py-2 outline-none w-full max-w-xs transition-colors"
+                        className="bg-white border border-slate-200 hover:border-slate-300 focus:border-brand-green text-slate-700 text-xs rounded-xl px-3 py-2 outline-none w-full max-w-xs transition-colors"
                       >
                         <option value="all">Any Game Engine</option>
                         <option value="Unity">Unity</option>
@@ -365,7 +374,7 @@ export default function App() {
                       </select>
                     </div>
 
-                    <div className="flex items-center text-xs text-slate-500 bg-slate-900/40 p-3 border border-slate-800 rounded-xl max-w-md">
+                    <div className="flex items-center text-xs text-slate-500 bg-slate-50 p-3 border border-slate-200/60 rounded-xl max-w-md">
                       <HelpCircle className="w-5 h-5 text-slate-400 mr-2 flex-shrink-0" />
                       <span>Federated indexing automatically searches titles, tags, and authors of Kenney and ThreeJS libraries, letting you jump straight to official endpoints.</span>
                     </div>
@@ -373,8 +382,8 @@ export default function App() {
                 )}
 
                 {/* Sub category horizontal pills */}
-                <div className="flex items-center gap-2 overflow-x-auto py-1 border-t border-slate-800/40 pt-3">
-                  <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mr-2 flex-shrink-0">Filter:</span>
+                <div className="flex items-center gap-2 overflow-x-auto py-1 border-t border-slate-100 pt-3">
+                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mr-2 flex-shrink-0">Filter:</span>
                   {[
                     { id: 'all', label: 'All Assets', icon: <Grid className="w-3.5 h-3.5" /> },
                     { id: '3d', label: '3D Models', icon: <Box className="w-3.5 h-3.5" /> },
@@ -390,8 +399,8 @@ export default function App() {
                         onClick={() => setSelectedType(cat.id as any)}
                         className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold border cursor-pointer transition-all flex-shrink-0 ${
                           isActive
-                            ? 'bg-cyan-500/10 border-cyan-500/30 text-cyan-400'
-                            : 'bg-slate-800 border-slate-700 text-slate-400 hover:border-slate-600 hover:text-slate-200'
+                            ? 'bg-brand-green/10 border-brand-green/20 text-brand-green'
+                            : 'bg-slate-50 border-slate-200/80 text-slate-500 hover:border-slate-300 hover:text-slate-800'
                         }`}
                       >
                         {cat.icon}
@@ -404,16 +413,16 @@ export default function App() {
 
               {/* Assets Grid section */}
               {isLoading ? (
-                <div className="py-20 text-center flex flex-col items-center justify-center space-y-4 text-slate-500 select-none">
-                  <div className="w-10 h-10 border-4 border-cyan-500/35 border-t-cyan-400 rounded-full animate-spin"></div>
+                <div className="py-20 text-center flex flex-col items-center justify-center space-y-4 text-slate-400 select-none">
+                  <div className="w-10 h-10 border-4 border-brand-green/35 border-t-brand-green rounded-full animate-spin"></div>
                   <div className="text-sm font-mono uppercase tracking-widest">Retrieving asset data...</div>
                 </div>
               ) : assets.length === 0 ? (
-                <div className="py-20 text-center bg-slate-900/20 border border-slate-800 rounded-2xl flex flex-col items-center justify-center space-y-4 max-w-lg mx-auto">
-                  <Compass className="w-10 h-10 text-slate-600 animate-pulse" />
+                <div className="py-20 text-center bg-white border border-slate-200/80 rounded-2xl flex flex-col items-center justify-center space-y-4 max-w-lg mx-auto shadow-xs">
+                  <Compass className="w-10 h-10 text-slate-300 animate-pulse" />
                   <div className="space-y-1">
-                    <h4 className="font-semibold text-white text-sm">No Game Assets Found</h4>
-                    <p className="text-xs text-slate-500 leading-relaxed max-w-xs mx-auto">
+                    <h4 className="font-semibold text-slate-800 text-sm">No Game Assets Found</h4>
+                    <p className="text-xs text-slate-400 leading-relaxed max-w-xs mx-auto">
                       There are no resources matching "{searchQuery}" under the selected directories. Try checking another source or search keyword.
                     </p>
                   </div>
@@ -424,7 +433,7 @@ export default function App() {
                       setSelectedSource('all');
                       setSelectedEngine('all');
                     }}
-                    className="text-xs text-cyan-400 font-bold hover:underline"
+                    className="text-xs text-brand-green font-bold hover:underline"
                   >
                     Clear Filter Filters
                   </button>
@@ -476,39 +485,39 @@ export default function App() {
       </AnimatePresence>
 
       {/* ================= BRAND FOOTER STATUS BAR ================= */}
-      <footer className="mt-20 border-t border-slate-800 bg-slate-950 px-8 py-8 text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-900">
+      <footer className="mt-20 border-t border-slate-200/80 bg-white px-8 py-10 text-xs text-slate-500 shadow-sm">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-100">
           <div className="space-y-1 text-center md:text-left">
-            <div className="font-semibold text-sm tracking-tight text-white font-sans flex items-center justify-center md:justify-start gap-1">
-              openassets<span className="text-cyan-500 font-bold">.studio</span>
+            <div className="font-extrabold text-sm tracking-tight text-slate-900 font-sans flex items-center justify-center md:justify-start gap-1">
+              openassets<span className="text-brand-green font-extrabold">.studio</span>
             </div>
             <p className="text-xs text-slate-400">
               Made by and for the indie game developer community. Build, integrate, co-maintain.
             </p>
-            <p className="text-[11px] text-slate-500 mt-1">
-              Contact: <a href="mailto:service@openassets.studio" className="hover:text-cyan-400 transition-colors font-mono">service@openassets.studio</a>
+            <p className="text-[11px] text-slate-400 mt-1">
+              Contact: <a href="mailto:service@openassets.studio" className="hover:text-brand-green transition-colors font-mono">service@openassets.studio</a>
             </p>
           </div>
 
           <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-slate-400">
             <span>License: CC0 & MIT</span>
-            <span className="text-slate-800">•</span>
-            <a href="https://kenney.nl" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">Kenney.nl</a>
-            <span className="text-slate-800">•</span>
-            <a href="https://threejsassets.com" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">ThreeJSAssets</a>
-            <span className="text-slate-800">•</span>
-            <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">Model Context Protocol</a>
+            <span className="text-slate-200">•</span>
+            <a href="https://kenney.nl" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green transition-colors">Kenney.nl</a>
+            <span className="text-slate-200">•</span>
+            <a href="https://threejsassets.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green transition-colors">ThreeJSAssets</a>
+            <span className="text-slate-200">•</span>
+            <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green transition-colors">Model Context Protocol</a>
           </div>
         </div>
 
         {/* Real-time Status indicators based on the Theme's Design HTML Footer */}
-        <div className="max-w-7xl mx-auto pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
+        <div className="max-w-7xl mx-auto pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-400">
           <div className="flex flex-wrap justify-center sm:justify-start gap-6">
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> Local Registry Online</span>
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span> Kenney API Bridge: 24ms</span>
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span> ThreeJS Peer Link Active</span>
+            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-brand-green rounded-full animate-pulse"></span> Local Registry Online</span>
+            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-brand-green rounded-full"></span> Kenney API Bridge: 24ms</span>
+            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-brand-green rounded-full"></span> ThreeJS Peer Link Active</span>
           </div>
-          <div className="uppercase tracking-widest font-bold text-slate-600 text-center sm:text-right">
+          <div className="uppercase tracking-widest font-bold text-slate-400 text-center sm:text-right">
             Seamless Cross-Platform Compatibility v1.0.2
           </div>
         </div>

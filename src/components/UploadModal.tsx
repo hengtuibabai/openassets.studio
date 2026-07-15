@@ -85,23 +85,23 @@ export const UploadModal: React.FC<UploadModalProps> = ({ onClose, onUploadSucce
   };
 
   return (
-    <div id="upload-modal-backdrop" className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
+    <div id="upload-modal-backdrop" className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm overflow-y-auto">
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 15 }}
-        className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+        className="relative w-full max-w-2xl bg-white border border-slate-200/80 rounded-2xl shadow-xl overflow-hidden flex flex-col max-h-[90vh]"
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between p-5 border-b border-slate-800 bg-slate-900/60 sticky top-0 z-20 backdrop-blur-md">
+        <div className="flex items-center justify-between p-5 border-b border-slate-200/80 bg-slate-50 sticky top-0 z-20 backdrop-blur-md">
           <div className="flex items-center gap-2">
-            <Upload className="w-5 h-5 text-cyan-400" />
-            <h2 className="text-base font-bold text-white tracking-tight">Share Game Asset or Code Snippet</h2>
+            <Upload className="w-5 h-5 text-brand-green" />
+            <h2 className="text-base font-bold text-slate-950 tracking-tight">Share Game Asset or Code Snippet</h2>
           </div>
           <button 
             type="button"
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -110,7 +110,7 @@ export const UploadModal: React.FC<UploadModalProps> = ({ onClose, onUploadSucce
         {/* Form Body */}
         <form onSubmit={handleSubmit} className="p-6 overflow-y-auto space-y-4 flex-grow">
           {errorMsg && (
-            <div className="p-3 bg-red-500/15 border border-red-500/20 rounded-lg text-xs font-semibold text-red-400">
+            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-xs font-semibold text-red-600">
               {errorMsg}
             </div>
           )}
@@ -118,24 +118,24 @@ export const UploadModal: React.FC<UploadModalProps> = ({ onClose, onUploadSucce
           {/* Title & Author */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Asset Title *</label>
+              <label className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Asset Title *</label>
               <input
                 type="text"
                 required
                 placeholder="e.g. RPG Save Manager"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-cyan-500 text-slate-200 text-sm rounded-lg px-3 py-2 outline-none transition-colors"
+                className="w-full bg-white border border-slate-200 hover:border-slate-300 focus:border-brand-green text-slate-800 text-sm rounded-lg px-3 py-2 outline-none transition-colors"
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Author Nickname</label>
+              <label className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Author Nickname</label>
               <input
                 type="text"
                 placeholder="e.g. dev_miku"
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-cyan-500 text-slate-200 text-sm rounded-lg px-3 py-2 outline-none transition-colors"
+                className="w-full bg-white border border-slate-200 hover:border-slate-300 focus:border-brand-green text-slate-800 text-sm rounded-lg px-3 py-2 outline-none transition-colors"
               />
             </div>
           </div>
@@ -143,7 +143,7 @@ export const UploadModal: React.FC<UploadModalProps> = ({ onClose, onUploadSucce
           {/* Type & Category */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Asset Type</label>
+              <label className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Asset Type</label>
               <select
                 value={type}
                 onChange={(e) => {
@@ -156,7 +156,7 @@ export const UploadModal: React.FC<UploadModalProps> = ({ onClose, onUploadSucce
                   else if (val === '2d') setFileFormat('.png');
                   else setFileFormat('.json');
                 }}
-                className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-cyan-500 text-slate-200 text-sm rounded-lg px-3 py-2 outline-none transition-colors"
+                className="w-full bg-white border border-slate-200 hover:border-slate-300 focus:border-brand-green text-slate-800 text-sm rounded-lg px-3 py-2 outline-none transition-colors"
               >
                 <option value="script">Script (.cs, .gd, .js)</option>
                 <option value="shader">Shader (.shader, .hlsl, .glsl)</option>
@@ -167,11 +167,11 @@ export const UploadModal: React.FC<UploadModalProps> = ({ onClose, onUploadSucce
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Category Category</label>
+              <label className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Category Category</label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-cyan-500 text-slate-200 text-sm rounded-lg px-3 py-2 outline-none transition-colors"
+                className="w-full bg-white border border-slate-200 hover:border-slate-300 focus:border-brand-green text-slate-800 text-sm rounded-lg px-3 py-2 outline-none transition-colors"
               >
                 {CATEGORY_PRESETS.map((cat) => (
                   <option key={cat} value={cat}>{cat}</option>
@@ -184,43 +184,43 @@ export const UploadModal: React.FC<UploadModalProps> = ({ onClose, onUploadSucce
           {/* Format & Payload Size */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="text-xs text-slate-400 font-semibold uppercase tracking-wider">File Format / Extension</label>
+              <label className="text-xs text-slate-500 font-semibold uppercase tracking-wider">File Format / Extension</label>
               <input
                 type="text"
                 placeholder="e.g. .cs or .gltf"
                 value={fileFormat}
                 onChange={(e) => setFileFormat(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-cyan-500 text-slate-200 text-sm rounded-lg px-3 py-2 outline-none transition-colors"
+                className="w-full bg-white border border-slate-200 hover:border-slate-300 focus:border-brand-green text-slate-800 text-sm rounded-lg px-3 py-2 outline-none transition-colors"
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Payload Weight</label>
+              <label className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Payload Weight</label>
               <input
                 type="text"
                 placeholder="e.g. 15 KB or 1.2 MB"
                 value={fileSize}
                 onChange={(e) => setFileSize(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-cyan-500 text-slate-200 text-sm rounded-lg px-3 py-2 outline-none transition-colors"
+                className="w-full bg-white border border-slate-200 hover:border-slate-300 focus:border-brand-green text-slate-800 text-sm rounded-lg px-3 py-2 outline-none transition-colors"
               />
             </div>
           </div>
 
           {/* Description */}
           <div className="space-y-1.5">
-            <label className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Brief Description *</label>
+            <label className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Brief Description *</label>
             <textarea
               required
               rows={2}
               placeholder="Give other developers a quick overview of how this module works or how to import it."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-cyan-500 text-slate-200 text-sm rounded-lg px-3 py-2 outline-none transition-colors resize-none leading-relaxed"
+              className="w-full bg-white border border-slate-200 hover:border-slate-300 focus:border-brand-green text-slate-800 text-sm rounded-lg px-3 py-2 outline-none transition-colors resize-none leading-relaxed"
             />
           </div>
 
           {/* Engine Compatibility */}
           <div className="space-y-2">
-            <label className="text-xs text-slate-400 font-semibold uppercase tracking-wider block">Game Engine Compatibility</label>
+            <label className="text-xs text-slate-500 font-semibold uppercase tracking-wider block">Game Engine Compatibility</label>
             <div className="flex flex-wrap gap-2">
               {AVAILABLE_ENGINES.map((eng) => {
                 const isActive = engines.includes(eng);
@@ -229,10 +229,10 @@ export const UploadModal: React.FC<UploadModalProps> = ({ onClose, onUploadSucce
                     key={eng}
                     type="button"
                     onClick={() => toggleEngine(eng)}
-                    className={`px-3 py-1 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
+                    className={`px-3 py-1.5 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
                       isActive 
-                        ? 'bg-cyan-500/15 border-cyan-500 text-cyan-400' 
-                        : 'bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-white'
+                        ? 'bg-brand-green/10 border-brand-green/35 text-brand-green font-bold' 
+                        : 'bg-white border-slate-200 text-slate-500 hover:border-slate-300 hover:text-slate-800'
                     }`}
                   >
                     {eng}
@@ -244,21 +244,21 @@ export const UploadModal: React.FC<UploadModalProps> = ({ onClose, onUploadSucce
 
           {/* Search Keywords */}
           <div className="space-y-1.5">
-            <label className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Search Keywords / Tags (comma-separated)</label>
+            <label className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Search Keywords / Tags (comma-separated)</label>
             <input
               type="text"
               placeholder="e.g. controller, utility, procedural, toon"
               value={tags}
               onChange={(e) => setTags(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-cyan-500 text-slate-200 text-sm rounded-lg px-3 py-2 outline-none transition-colors"
+              className="w-full bg-white border border-slate-200 hover:border-slate-300 focus:border-brand-green text-slate-800 text-sm rounded-lg px-3 py-2 outline-none transition-colors"
             />
           </div>
 
           {/* Source Payload Area */}
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
-              <label className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Asset Code Snippet / Shaders / URL *</label>
-              <span className="text-[10px] text-slate-500">Supports Raw Code, JSON-RPC templates, or direct links</span>
+              <label className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Asset Code Snippet / Shaders / URL *</label>
+              <span className="text-[10px] text-slate-400 font-medium">Supports Raw Code, JSON-RPC templates, or direct links</span>
             </div>
             <textarea
               required
@@ -266,23 +266,23 @@ export const UploadModal: React.FC<UploadModalProps> = ({ onClose, onUploadSucce
               placeholder={type === 'script' ? 'Paste your C#, GDScript, or JavaScript character controller here...' : 'Paste your shader source or model links here...'}
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-cyan-500 text-slate-200 text-xs font-mono rounded-lg px-3 py-2.5 outline-none transition-colors resize-y leading-relaxed"
+              className="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-brand-green text-emerald-400 text-xs font-mono rounded-lg px-3 py-2.5 outline-none transition-colors resize-y leading-relaxed"
             />
           </div>
 
           {/* Footer controls */}
-          <div className="flex items-center gap-2 pt-4 justify-end border-t border-slate-800/60 sticky bottom-0 bg-slate-900 py-2 z-10">
+          <div className="flex items-center gap-2 pt-4 justify-end border-t border-slate-100 sticky bottom-0 bg-white py-2 z-10">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-xs font-bold rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors cursor-pointer"
+              className="px-4 py-2 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex items-center gap-1.5 px-5 py-2 text-xs font-bold rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white disabled:opacity-50 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 px-5 py-2 text-xs font-bold rounded-lg bg-brand-green hover:bg-brand-green-hover text-white disabled:opacity-50 transition-colors cursor-pointer shadow-sm shadow-brand-green/15"
             >
               <CheckCircle className="w-3.5 h-3.5" />
               {isSubmitting ? 'Uploading...' : 'Publish Asset'}

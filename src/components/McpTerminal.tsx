@@ -135,42 +135,42 @@ export const McpTerminal: React.FC = () => {
   };
 
   return (
-    <div id="mcp-terminal-section" className="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[520px]">
+    <div id="mcp-terminal-section" className="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm flex flex-col h-[520px]">
       {/* Tab Header */}
-      <div className="bg-slate-900 border-b border-slate-800 px-5 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="bg-slate-50 border-b border-slate-200/80 px-5 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
-          <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400">
+          <div className="p-1.5 rounded-lg bg-brand-green/10 text-brand-green">
             <Terminal className="w-5 h-5 animate-pulse" />
           </div>
           <div>
-            <h3 className="font-bold text-white text-sm tracking-tight flex items-center gap-1.5">
+            <h3 className="font-bold text-slate-950 text-sm tracking-tight flex items-center gap-1.5">
               Model Context Protocol Gateway
-              <span className="text-[10px] bg-cyan-500/10 text-cyan-400 font-mono font-bold px-2 py-0.5 rounded-full uppercase border border-cyan-500/20">
+              <span className="text-[10px] bg-brand-green/10 text-brand-green font-mono font-bold px-2 py-0.5 rounded-full uppercase border border-brand-green/20">
                 Active
               </span>
             </h3>
-            <p className="text-xs text-slate-400">Query openassets.studio dynamically via LLM agents & game engines</p>
+            <p className="text-xs text-slate-500">Query openassets.studio dynamically via LLM agents & game engines</p>
           </div>
         </div>
 
         {/* Tab switchers */}
-        <div className="flex bg-slate-950 p-1 rounded-lg border border-slate-800">
+        <div className="flex bg-slate-100 p-1 rounded-lg border border-slate-200/60">
           <button
             onClick={() => setActiveTab('console')}
-            className={`px-3 py-1 text-xs font-semibold rounded-md transition-all cursor-pointer ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-all cursor-pointer ${
               activeTab === 'console' 
-                ? 'bg-slate-800 text-cyan-400 shadow-sm' 
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-white text-brand-green shadow-sm font-bold' 
+                : 'text-slate-500 hover:text-slate-800'
             }`}
           >
             Terminal Console
           </button>
           <button
             onClick={() => setActiveTab('config')}
-            className={`px-3 py-1 text-xs font-semibold rounded-md transition-all cursor-pointer ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-all cursor-pointer ${
               activeTab === 'config' 
-                ? 'bg-slate-800 text-cyan-400 shadow-sm' 
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-white text-brand-green shadow-sm font-bold' 
+                : 'text-slate-500 hover:text-slate-800'
             }`}
           >
             IDE Settings
@@ -182,12 +182,12 @@ export const McpTerminal: React.FC = () => {
       <div className="flex-grow flex flex-col overflow-hidden min-h-0">
         {activeTab === 'config' ? (
           /* ================= INTEGRATION CONFIG ================= */
-          <div className="p-6 overflow-y-auto space-y-5 h-full">
-            <div className="flex gap-3 items-start bg-cyan-500/5 border border-cyan-500/10 p-4 rounded-xl">
-              <ShieldCheck className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+          <div className="p-6 overflow-y-auto space-y-5 h-full bg-white">
+            <div className="flex gap-3 items-start bg-emerald-50 border border-emerald-100 p-4 rounded-xl">
+              <ShieldCheck className="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" />
               <div className="space-y-1">
-                <h4 className="text-xs font-bold text-cyan-300 uppercase tracking-widest">Connect to Cursor, Claude Desktop, or VS Code</h4>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <h4 className="text-xs font-bold text-brand-green uppercase tracking-widest">Connect to Cursor, Claude Desktop, or VS Code</h4>
+                <p className="text-xs text-slate-600 leading-relaxed">
                   Add openassets.studio to your system's Model Context Protocol (MCP) server array. Once connected, your LLM code assistant can search the game asset directories and append shaders or scripts directly into your files.
                 </p>
               </div>
@@ -195,14 +195,14 @@ export const McpTerminal: React.FC = () => {
 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-400 font-bold tracking-wide uppercase font-mono">Cursor / Claude Config JSON (~/.code/config.json)</span>
+                <span className="text-xs text-slate-500 font-bold tracking-wide uppercase font-mono">Cursor / Claude Config JSON (~/.code/config.json)</span>
                 <button
                   onClick={handleCopyConfig}
-                  className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white font-semibold transition-colors cursor-pointer"
+                  className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-brand-green font-semibold transition-colors cursor-pointer"
                 >
                   {isCopied ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-cyan-400" />
+                      <Check className="w-3.5 h-3.5 text-brand-green" />
                       Copied Config!
                     </>
                   ) : (
@@ -214,23 +214,23 @@ export const McpTerminal: React.FC = () => {
                 </button>
               </div>
 
-              <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-inner">
-                <pre className="p-4 font-mono text-xs text-slate-300 overflow-x-auto leading-relaxed">
+              <div className="bg-slate-950 border border-slate-800 rounded-xl overflow-hidden shadow-inner">
+                <pre className="p-4 font-mono text-xs text-emerald-400 overflow-x-auto leading-relaxed">
                   <code>{configCode}</code>
                 </pre>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-500 bg-slate-900/40 p-4 border border-slate-800 rounded-xl">
-              <span className="flex items-center gap-1 text-slate-400">
-                <Layers className="w-4 h-4 text-slate-500" />
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-500 bg-slate-50 p-4 border border-slate-200/80 rounded-xl">
+              <span className="flex items-center gap-1 text-slate-600">
+                <Layers className="w-4 h-4 text-slate-400" />
                 Cross-platform compatibility: Node.js, Godot MCP, and Unity LLM modules.
               </span>
               <a 
                 href="https://modelcontextprotocol.io" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="text-cyan-400 hover:underline inline-flex items-center gap-1 font-semibold"
+                className="text-brand-green hover:text-brand-green-hover hover:underline inline-flex items-center gap-1 font-semibold"
               >
                 Learn MCP
                 <ArrowRight className="w-3 h-3" />
@@ -239,15 +239,15 @@ export const McpTerminal: React.FC = () => {
           </div>
         ) : (
           /* ================= INTERACTIVE TERMINAL CONSOLE ================= */
-          <div className="flex-grow flex flex-col lg:flex-row min-h-0 overflow-hidden">
+          <div className="flex-grow flex flex-col lg:flex-row min-h-0 overflow-hidden bg-white">
             {/* Console Control Panel */}
-            <div className="w-full lg:w-1/3 bg-slate-900/40 border-b lg:border-b-0 lg:border-r border-slate-800 p-5 flex flex-col gap-4 overflow-y-auto">
+            <div className="w-full lg:w-1/3 bg-slate-50/50 border-b lg:border-b-0 lg:border-r border-slate-200/80 p-5 flex flex-col gap-4 overflow-y-auto">
               <div className="space-y-1">
                 <label className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">MCP RPC Method</label>
                 <select
                   value={command}
                   onChange={(e) => setCommand(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 focus:border-cyan-500 text-slate-200 text-xs rounded-lg px-3 py-2 outline-none transition-colors"
+                  className="w-full bg-white border border-slate-200 focus:border-brand-green text-slate-800 text-xs rounded-lg px-3 py-2 outline-none transition-colors"
                 >
                   <option value="tools/list">tools/list (List all capabilities)</option>
                   <option value="tools/call">tools/call (Call specific function)</option>
@@ -260,7 +260,7 @@ export const McpTerminal: React.FC = () => {
                     <label className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Arguments (JSON)</label>
                     <button 
                       onClick={() => setArgsJson('{\n  "name": "search_assets",\n  "arguments": {\n    "query": "toon",\n    "type": "shader"\n  }\n}')}
-                      className="text-[9px] text-cyan-500/80 hover:text-cyan-400 uppercase font-bold cursor-pointer"
+                      className="text-[9px] text-brand-green hover:text-brand-green-hover uppercase font-bold cursor-pointer"
                     >
                       Search Template
                     </button>
@@ -269,7 +269,7 @@ export const McpTerminal: React.FC = () => {
                     value={argsJson}
                     onChange={(e) => setArgsJson(e.target.value)}
                     rows={4}
-                    className="w-full bg-slate-950 border border-slate-800 focus:border-cyan-500 font-mono text-[11px] text-slate-300 rounded-lg px-3 py-2 outline-none transition-colors resize-none leading-normal"
+                    className="w-full bg-white border border-slate-200 focus:border-brand-green font-mono text-[11px] text-slate-700 rounded-lg px-3 py-2 outline-none transition-colors resize-none leading-normal"
                   />
                 </div>
               )}
@@ -278,7 +278,7 @@ export const McpTerminal: React.FC = () => {
                 type="button"
                 onClick={() => runMcpRequest()}
                 disabled={isLoading}
-                className="w-full flex items-center justify-center gap-2 py-2 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold rounded-lg shadow-md hover:shadow-cyan-500/5 disabled:opacity-50 transition-colors cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 py-2 bg-brand-green hover:bg-brand-green-hover text-white text-xs font-bold rounded-lg shadow-sm disabled:opacity-50 transition-colors cursor-pointer"
               >
                 {isLoading ? (
                   <>
@@ -293,34 +293,34 @@ export const McpTerminal: React.FC = () => {
                 )}
               </button>
 
-              <div className="space-y-2.5 pt-3 border-t border-slate-800/80">
+              <div className="space-y-2.5 pt-3 border-t border-slate-200/80">
                 <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1">
-                  <HelpCircle className="w-3.5 h-3.5 text-slate-500" />
+                  <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
                   Try Console Presets:
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <button
                     onClick={triggerListTools}
-                    className="w-full text-left bg-slate-950 border border-slate-800 hover:border-slate-700 p-2 rounded-md hover:text-cyan-400 transition-all flex items-center justify-between group cursor-pointer"
+                    className="w-full text-left bg-white border border-slate-200 hover:border-slate-300 p-2 rounded-md hover:text-brand-green transition-all flex items-center justify-between group cursor-pointer"
                   >
-                    <span className="text-xs font-mono text-slate-300 group-hover:text-cyan-400">1. Query Available Tools</span>
-                    <span className="text-[9px] bg-slate-900 border border-slate-800/80 text-slate-500 px-1 py-0.5 rounded font-mono font-bold uppercase group-hover:text-cyan-400">RPC</span>
+                    <span className="text-xs font-mono text-slate-600 group-hover:text-brand-green">1. Query Available Tools</span>
+                    <span className="text-[9px] bg-slate-50 border border-slate-200 text-slate-400 px-1 py-0.5 rounded font-mono font-bold uppercase group-hover:text-brand-green">RPC</span>
                   </button>
 
                   <button
                     onClick={triggerSearchWaterShader}
-                    className="w-full text-left bg-slate-950 border border-slate-800 hover:border-slate-700 p-2 rounded-md hover:text-cyan-400 transition-all flex items-center justify-between group cursor-pointer"
+                    className="w-full text-left bg-white border border-slate-200 hover:border-slate-300 p-2 rounded-md hover:text-brand-green transition-all flex items-center justify-between group cursor-pointer"
                   >
-                    <span className="text-xs font-mono text-slate-300 group-hover:text-cyan-400">2. Call: Search Shaders</span>
-                    <span className="text-[9px] bg-slate-900 border border-slate-800/80 text-slate-500 px-1 py-0.5 rounded font-mono font-bold uppercase group-hover:text-cyan-400">RPC</span>
+                    <span className="text-xs font-mono text-slate-600 group-hover:text-brand-green">2. Call: Search Shaders</span>
+                    <span className="text-[9px] bg-slate-50 border border-slate-200 text-slate-400 px-1 py-0.5 rounded font-mono font-bold uppercase group-hover:text-brand-green">RPC</span>
                   </button>
 
                   <button
                     onClick={triggerGetHeroDetails}
-                    className="w-full text-left bg-slate-950 border border-slate-800 hover:border-slate-700 p-2 rounded-md hover:text-cyan-400 transition-all flex items-center justify-between group cursor-pointer"
+                    className="w-full text-left bg-white border border-slate-200 hover:border-slate-300 p-2 rounded-md hover:text-brand-green transition-all flex items-center justify-between group cursor-pointer"
                   >
-                    <span className="text-xs font-mono text-slate-300 group-hover:text-cyan-400">3. Call: Get Hero Details</span>
-                    <span className="text-[9px] bg-slate-900 border border-slate-800/80 text-slate-500 px-1 py-0.5 rounded font-mono font-bold uppercase group-hover:text-cyan-400">RPC</span>
+                    <span className="text-xs font-mono text-slate-600 group-hover:text-brand-green">3. Call: Get Hero Details</span>
+                    <span className="text-[9px] bg-slate-50 border border-slate-200 text-slate-400 px-1 py-0.5 rounded font-mono font-bold uppercase group-hover:text-brand-green">RPC</span>
                   </button>
                 </div>
               </div>
@@ -329,7 +329,7 @@ export const McpTerminal: React.FC = () => {
             {/* Live Terminal Output Logs */}
             <div className="flex-grow flex flex-col min-h-0 bg-slate-950">
               {/* Output Sub-Header */}
-              <div className="bg-slate-900/60 border-b border-slate-800 px-4 py-2 flex items-center justify-between">
+              <div className="bg-slate-900 border-b border-slate-800 px-4 py-2 flex items-center justify-between">
                 <span className="text-[10px] text-slate-500 font-bold uppercase font-mono tracking-widest">JSON-RPC Communication Logs</span>
                 {logs.length > 0 && (
                   <button 
@@ -354,10 +354,10 @@ export const McpTerminal: React.FC = () => {
                       key={log.id} 
                       className={`p-3 border rounded-xl space-y-1.5 ${
                         log.direction === 'request'
-                          ? 'bg-slate-900/50 border-slate-800 text-cyan-300'
+                          ? 'bg-slate-900/50 border-slate-800 text-emerald-300'
                           : log.payload?.error
                             ? 'bg-red-500/5 border-red-500/20 text-red-400'
-                            : 'bg-cyan-500/5 border-cyan-500/10 text-cyan-400'
+                            : 'bg-emerald-500/5 border-emerald-500/10 text-emerald-400'
                       }`}
                     >
                       {/* Log meta */}
