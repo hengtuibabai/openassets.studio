@@ -444,6 +444,9 @@ export default function App() {
             <p className="text-xs text-slate-400">
               Made by and for the indie game developer community. Build, integrate, co-maintain.
             </p>
+            <p className="text-[11px] text-slate-500 mt-1">
+              Contact: <a href="mailto:service@openassets.studio" className="hover:text-cyan-400 transition-colors font-mono">service@openassets.studio</a>
+            </p>
           </div>
 
           <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-slate-400">
