@@ -1,0 +1,6 @@
+{
+  "name": "openassets.studio",
+  "description": "A open-source collaborative game asset sharing platform featuring game art, code snippets, Model Context Protocol (MCP) integrations, and federated search for Kenney.nl and ThreeJS Assets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
