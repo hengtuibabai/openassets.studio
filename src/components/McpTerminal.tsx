@@ -84,6 +84,11 @@ export const McpTerminal: React.FC = () => {
         body: JSON.stringify(mcpRequestPayload)
       });
 
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('API server returned a non-JSON (HTML) response. This usually indicates the app is deployed in a static-only web environment without a running Node/Express backend.');
+      }
+
       const mcpResponsePayload = await response.json();
 
       // Log response

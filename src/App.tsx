@@ -10,6 +10,7 @@ import { AssetCard } from './components/AssetCard';
 import { AssetDetailModal } from './components/AssetDetailModal';
 import { UploadModal } from './components/UploadModal';
 import { McpTerminal } from './components/McpTerminal';
+import STATIC_ASSETS from '../data/assets.json';
 
 export default function App() {
   // Asset state
@@ -28,6 +29,40 @@ export default function App() {
   const [showFiltersPanel, setShowFiltersPanel] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Filter local bundled assets as fallback
+  const loadLocalAssets = () => {
+    let list = [...(STATIC_ASSETS as Asset[])];
+
+    // Filter by Type
+    if (selectedType !== 'all') {
+      list = list.filter(item => item.type === selectedType);
+    }
+
+    // Filter by Source
+    if (selectedSource !== 'all') {
+      list = list.filter(item => item.source === selectedSource);
+    }
+
+    // Filter by Engine
+    if (selectedEngine !== 'all') {
+      list = list.filter(item => item.engine.some(eng => eng.toLowerCase() === selectedEngine.toLowerCase()));
+    }
+
+    // Filter by Search text
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase().trim();
+      list = list.filter(item => 
+        item.title.toLowerCase().includes(q) ||
+        item.description.toLowerCase().includes(q) ||
+        item.category.toLowerCase().includes(q) ||
+        item.author.toLowerCase().includes(q) ||
+        item.tags.some(t => t.toLowerCase().includes(q))
+      );
+    }
+
+    setAssets(list);
+  };
+
   // Fetch all assets based on active filters
   const fetchAssets = async () => {
     setIsLoading(true);
@@ -40,13 +75,19 @@ export default function App() {
 
       const response = await fetch(`/api/assets?${params.toString()}`);
       if (response.ok) {
-        const data = await response.json();
-        setAssets(data);
-      } else {
-        console.error('Error fetching assets from server');
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          const data = await response.json();
+          setAssets(data);
+          return;
+        }
       }
+      
+      // Fallback: If not JSON (e.g. static site returning HTML or non-ok response)
+      loadLocalAssets();
     } catch (err) {
-      console.error('Network error fetching assets:', err);
+      console.warn('Network error fetching assets, falling back to local static assets:', err);
+      loadLocalAssets();
     } finally {
       setIsLoading(false);
     }
